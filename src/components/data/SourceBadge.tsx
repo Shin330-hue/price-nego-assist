@@ -24,7 +24,7 @@ const QUALITY_CLASS: Record<DataQuality, string> = {
   official_verified: 'text-success',
   official_manual: 'text-success',
   sample: 'text-danger font-semibold',
-  deprecated: 'text-[#b45309] font-semibold',
+  deprecated: 'text-warning',
 }
 
 // 出典・真正性の小バッジ（仕様書 8.2）。

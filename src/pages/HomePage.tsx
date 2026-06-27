@@ -39,7 +39,7 @@ export function HomePage() {
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover object-center"
         />
-        <div className="absolute inset-y-0 left-0 w-full bg-[rgba(255,247,236,0.96)] sm:w-[58%]" />
+        <div className="absolute inset-y-0 left-0 w-full bg-[rgba(255,247,236,0.9)] sm:w-[58%]" />
         <div className="relative flex min-h-[440px] max-w-xl flex-col justify-center px-5 py-8 sm:min-h-[480px] sm:px-10">
           <span className="pop-kicker mb-4 w-fit">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />

@@ -10,15 +10,13 @@
   --surface: #ffffff;
   --surface-2: #fff0d6;
   --foreground: #16313a;
-  /* テキスト用途で明色背景(白/#fff7ec/#fff0d6)でも WCAG AA(4.5:1) を満たすよう調整。
-     ポップなティール/レッド/グリーンの色相は維持し輝度のみ下げている。 */
-  --muted: #5b6a6f;
+  --muted: #65757a;
   --border: rgba(22, 49, 58, 0.16);
-  --primary: #0c6f6b;
+  --primary: #128f8b;
   --primary-foreground: #ffffff;
-  --danger: #bf3728;
+  --danger: #d94a3a;
   --warning: #f2a900;
-  --success: #0f7a54;
+  --success: #138f63;
   --coral: #ff8066;
   --sunny: #ffd166;
 }
