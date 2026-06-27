@@ -67,3 +67,4 @@
 - 採用品目を増減した場合は、`fields.ts` の `relatedIndicatorIds`・`negotiation-points.ts` の `indicatorIds`・`data-loader.ts` の import/配列・本表を必ず同期する。
 - `pnpm validate:data`（および `data-integrity.test.ts`）が次を検証する: 指標の必須メタ・`period` 昇順・`https://`・ISO日付、`fields`/`negotiation-points` の indicatorId 実在、**交渉ポイントの indicatorId が同一分野の `relatedIndicatorIds` に含まれること**、日銀系指標の `calculationNote` に系列コード（`PRCG20_`/`PRCS20_`）があること、本番モードでの `sample` 検出。なお本表（DATA_CATALOG）と `fields.ts` の一致は手動確認とする。
 - 電力・都市ガス・塗料・亜鉛めっき鋼板・水道は2020年基準の小類別/品目で遡及が2020開始。10年に揃える場合は2015基準系列とのリンクが必要（別作業）。
+- 指標カード＝「公的根拠の提示」、交渉ポイント＝「説明の参考」。汎用性の高い一部指標（潤滑油・耐火物・最低賃金 等）は文脈カードとして表示し、専用の交渉ポイントを持たない場合がある（意図的）。逆方向（交渉ポイントの indicatorId は必ず同一分野の表示指標に含む）は `validate:data` で強制している。

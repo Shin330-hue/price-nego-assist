@@ -10,6 +10,7 @@ import {
   getSourceSummaries,
 } from '../lib/data-loader'
 import { CATEGORY_LABEL } from '../lib/labels'
+import { STAT_SEARCH_URL, bojApiCsvUrl, bojDataCode } from '../lib/boj'
 import { APP_TITLE_SHORT, CTA, DATA_TRUST_NOTE } from '../lib/copy'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { DataQualityBanner } from '../components/data/DataQualityBanner'
@@ -151,10 +152,19 @@ export function FieldPage() {
         <Section id="sources" title="出典概要">
           <ul className="space-y-2">
             {sourceSummaries.map((s) => (
-              <li key={s.id} className="industrial-card p-3">
+              <li key={s.id} className="industrial-card space-y-1 p-3">
+                <p className="font-semibold">{s.label}</p>
                 <ExternalLink href={s.sourceUrl}>
                   {s.publisher} / {s.sourceName}
                 </ExternalLink>
+                {s.seriesCode && (
+                  <p className="text-xs text-muted">
+                    データコード: {bojDataCode(s.seriesCode)}（
+                    <ExternalLink href={STAT_SEARCH_URL}>日銀検索</ExternalLink>
+                    {' / '}
+                    <ExternalLink href={bojApiCsvUrl(s.seriesCode)}>原データCSV</ExternalLink>）
+                  </p>
+                )}
                 <SourceBadge
                   publisher={s.publisher}
                   sourceName={s.sourceName}

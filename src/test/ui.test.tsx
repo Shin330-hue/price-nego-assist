@@ -66,8 +66,9 @@ describe('FieldPage', () => {
     renderAt('/fields/cutting')
 
     expect(await screen.findByRole('heading', { level: 1, name: '切削加工' })).toBeInTheDocument()
-    // 切削は分野固有の品目（工具鋼）を表示する（分野間の差別化）
-    expect(screen.getByText('工具鋼 企業物価指数')).toBeInTheDocument()
+    // 切削は分野固有の品目（工具鋼）を表示する（分野間の差別化）。
+    // 指標カードと出典概要の双方に出るため getAllByText で判定。
+    expect(screen.getAllByText('工具鋼 企業物価指数').length).toBeGreaterThan(0)
     expect(screen.getByText('買いたたきの禁止')).toBeInTheDocument()
     expect(screen.getByText(/価格協議のお願い/)).toBeInTheDocument()
 
