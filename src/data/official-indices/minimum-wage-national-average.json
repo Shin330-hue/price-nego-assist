@@ -1,0 +1,60 @@
+{
+  "id": "minimum-wage-national-average",
+  "category": "labor",
+  "name": "地域別最低賃金 全国加重平均",
+  "description": "地域別最低賃金の全国加重平均額の年次推移。労務費上昇の公的な根拠として用いる。",
+  "publisher": "厚生労働省",
+  "sourceName": "最低賃金（全国加重平均）の推移",
+  "sourceUrl": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/roudoukijun/minimumichiran/index.html",
+  "sourceDocumentUrl": "https://www.mhlw.go.jp/content/11200000/001572925.pdf",
+  "seriesName": "地域別最低賃金 / 全国加重平均額",
+  "unit": "円（時間額）",
+  "frequency": "annual",
+  "publishedAt": "2025-09-05",
+  "retrievedAt": "2026-06-27",
+  "quality": "official_manual",
+  "calculationNote": "各年度（令和N年度）の地域別最低賃金 全国加重平均額（時間額、10月以降に都道府県ごと順次発効）。基準年=100の指数ではないため基準年比は算出しない。前年比は前年度値と比較。出典: 厚生労働省「最低賃金（全国加重平均）の引上げ額・引上げ率の推移」および令和7年度全国一覧。令和7年度（2025）=1,121円は2025-09-05報道発表で確定。",
+  "negotiationUse": "最低賃金の継続的な上昇という公的事実を、労務費転嫁の客観的背景として提示する。自社の賃金改定資料・社会保険料負担と併せて説明する。",
+  "values": [
+    {
+      "period": "2016",
+      "value": 823
+    },
+    {
+      "period": "2017",
+      "value": 848
+    },
+    {
+      "period": "2018",
+      "value": 874
+    },
+    {
+      "period": "2019",
+      "value": 901
+    },
+    {
+      "period": "2020",
+      "value": 902
+    },
+    {
+      "period": "2021",
+      "value": 930
+    },
+    {
+      "period": "2022",
+      "value": 961
+    },
+    {
+      "period": "2023",
+      "value": 1004
+    },
+    {
+      "period": "2024",
+      "value": 1055
+    },
+    {
+      "period": "2025",
+      "value": 1121
+    }
+  ]
+}

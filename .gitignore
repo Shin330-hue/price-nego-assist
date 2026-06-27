@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+coverage
+*.local
+.DS_Store
+.vercel
+*.log
+
+# エージェント作業用の中間物（再取得可能。リポジトリに含めない）
+tmp/
+
+# GitHub Actions CI: push には token の workflow スコープが必要なため当面未追跡。
+# 有効化時は本行を外して追加（要 workflow スコープ: `gh auth refresh -s workflow`、
+# または GitHub の Web UI で .github/workflows/ci.yml を作成）。
+.github/workflows/ci.yml

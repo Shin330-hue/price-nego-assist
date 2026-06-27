@@ -1,0 +1,8 @@
+allowBuilds:
+  esbuild: true
+# 標準 pnpm (CI 等) でのビルドスクリプト許可。allowBuilds はこの環境固有のキー。
+onlyBuiltDependencies:
+  - esbuild
+# vitest が別バージョンの vite を引き込むのを防ぎ、単一バージョンに固定する。
+overrides:
+  vite: 6.4.3

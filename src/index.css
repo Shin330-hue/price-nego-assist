@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   テーマ変数（Industrial Precision: 鉄黒系ダーク + 溶接オレンジ）
+   仕様書 9.1
+   ========================================================================= */
+:root {
+  --background: #111318;
+  --surface: #191d24;
+  --surface-2: #202631;
+  --foreground: #f4f2ee;
+  --muted: #a5adba;
+  --border: rgba(255, 255, 255, 0.12);
+  --primary: #f59e0b;
+  --primary-foreground: #111318;
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --success: #22c55e;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family:
+    system-ui,
+    -apple-system,
+    'Hiragino Kaku Gothic ProN',
+    'Noto Sans JP',
+    Meiryo,
+    sans-serif;
+  line-height: 1.7;
+}
+
+/* キーボード操作のフォーカスリング（アクセシビリティ 8.3） */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* =========================================================================
+   汎用クラス（仕様書 9.2）
+   ========================================================================= */
+.industrial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.data-number {
+  font-variant-numeric: tabular-nums;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+}
+
+.print-only {
+  display: none;
+}
+
+/* =========================================================================
+   印刷設計（仕様書 9.2 / 設計書 12 章）
+   通常画面はダーク、印刷シートは白背景・黒文字のビジネス文書調。
+   ========================================================================= */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  /* 印刷対象は印刷シートに限定する。FieldPage 等のダッシュボードを
+     ブラウザ標準印刷(Cmd/Ctrl+P)した際に紙面へ出力しない（設計書 12.2）。 */
+  body * {
+    visibility: hidden;
+  }
+
+  .print-sheet,
+  .print-sheet * {
+    visibility: visible;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  html,
+  body {
+    background: #fff !important;
+    color: #111 !important;
+  }
+
+  .print-sheet {
+    background: #fff !important;
+    color: #111 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .avoid-break {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
