@@ -7,21 +7,21 @@ export function AppFooter() {
   return (
     <footer className="no-print mt-16 border-t border-border bg-surface">
       <div className="mx-auto max-w-6xl space-y-4 px-4 py-8 text-sm text-muted">
-        <p className="leading-relaxed">{LEGAL_NOTICE_SHORT}</p>
+        <p className="max-w-4xl leading-relaxed">{LEGAL_NOTICE_SHORT}</p>
         <nav aria-label="フッターナビゲーション">
           <ul className="flex flex-wrap gap-x-5 gap-y-2">
             <li>
-              <Link to={ROUTES.home} className="hover:text-primary">
+              <Link to={ROUTES.home} className="font-semibold hover:text-primary">
                 トップ
               </Link>
             </li>
             <li>
-              <Link to={ROUTES.sources} className="hover:text-primary">
+              <Link to={ROUTES.sources} className="font-semibold hover:text-primary">
                 出典一覧
               </Link>
             </li>
             <li>
-              <Link to={ROUTES.about} className="hover:text-primary">
+              <Link to={ROUTES.about} className="font-semibold hover:text-primary">
                 このツールについて
               </Link>
             </li>

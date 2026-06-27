@@ -14,7 +14,7 @@ export function NotFoundPage({ message }: { message?: string }) {
       </p>
       <Link
         to={ROUTES.home}
-        className="inline-flex items-center rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:brightness-110"
+        className="inline-flex items-center rounded-lg bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:brightness-110"
       >
         トップへ戻る
       </Link>

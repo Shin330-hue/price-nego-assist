@@ -17,7 +17,7 @@ export function LegalBasisCard({ legalBasis, compact = false }: LegalBasisCardPr
   return (
     <article
       className={cn(
-        'avoid-break space-y-3 rounded-xl border p-4',
+        'avoid-break space-y-3 rounded-lg border p-4',
         compact ? 'border-gray-300 bg-white text-gray-800' : 'industrial-card',
       )}
     >

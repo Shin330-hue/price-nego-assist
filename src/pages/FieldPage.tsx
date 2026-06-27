@@ -12,6 +12,7 @@ import {
 import { CATEGORY_LABEL } from '../lib/labels'
 import { STAT_SEARCH_URL, bojApiCsvUrl, bojDataCode } from '../lib/boj'
 import { APP_TITLE_SHORT, CTA, DATA_TRUST_NOTE } from '../lib/copy'
+import { FIELD_PRESENTATION } from '../data/ui-presentation'
 import { useDocumentTitle } from '../lib/useDocumentTitle'
 import { DataQualityBanner } from '../components/data/DataQualityBanner'
 import { CostIndicatorCard } from '../components/data/CostIndicatorCard'
@@ -28,7 +29,7 @@ import { NotFoundPage } from './NotFoundPage'
 function Section({ id, title, children }: { id: string; title: string; children: ReactNode }) {
   return (
     <section aria-labelledby={id} className="space-y-4">
-      <h2 id={id} className="text-xl font-bold">
+      <h2 id={id} className="text-xl font-black">
         {title}
       </h2>
       {children}
@@ -52,6 +53,7 @@ export function FieldPage() {
   const legalBases = getLegalBases()
   const sourceSummaries = getSourceSummaries(indicators)
   const categories = Array.from(new Set(indicators.map((i) => i.category)))
+  const presentation = FIELD_PRESENTATION[field.id]
 
   return (
     <div className="mx-auto max-w-5xl space-y-12 px-4 py-8">
@@ -66,29 +68,43 @@ export function FieldPage() {
           <ArrowLeft className="h-4 w-4" aria-hidden="true" />
           分野選択へ戻る
         </Link>
-        <header className="space-y-2">
-          <h1 className="text-2xl font-bold sm:text-3xl">{field.name}</h1>
-          <p className="max-w-3xl leading-relaxed text-muted">{field.description}</p>
-          <ul className="flex flex-wrap gap-1.5">
-            {categories.map((c) => (
-              <li
-                key={c}
-                className="rounded-full border border-border px-2 py-0.5 text-xs text-muted"
-              >
-                {CATEGORY_LABEL[c]}
-              </li>
-            ))}
-          </ul>
+        <header className="industrial-card overflow-hidden p-4 sm:p-6">
+          <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
+            <div className="sticker-frame aspect-square w-32 shrink-0 overflow-hidden sm:w-40">
+              <img
+                src={presentation.imageSrc}
+                alt={presentation.imageAlt}
+                className="h-full w-full object-cover"
+              />
+            </div>
+            <div className="space-y-3">
+              <span className="pop-kicker">{presentation.tagline}</span>
+              <div>
+                <h1 className="text-2xl font-black sm:text-4xl">{field.name}</h1>
+                <p className="mt-2 max-w-3xl leading-relaxed text-muted">{field.description}</p>
+              </div>
+              <ul className="flex flex-wrap gap-1.5">
+                {categories.map((c) => (
+                  <li
+                    key={c}
+                    className="rounded-full border border-border bg-surface-2 px-2 py-0.5 text-xs font-semibold text-muted"
+                  >
+                    {CATEGORY_LABEL[c]}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </header>
       </div>
 
       <DataQualityBanner indicators={indicators} />
 
-      <Section id="cost-profile" title="この分野で影響しやすいコスト要因">
+      <Section id="cost-profile" title="このコスト、上がってませんか？">
         <FieldCostProfile field={field} />
       </Section>
 
-      <Section id="indicators" title="公的コスト指標">
+      <Section id="indicators" title="公的データで見てみる">
         <p className="flex items-center gap-1.5 text-xs text-muted">
           <ShieldCheck className="h-3.5 w-3.5 shrink-0 text-success" aria-hidden="true" />
           {DATA_TRUST_NOTE}
@@ -107,7 +123,7 @@ export function FieldPage() {
       </Section>
 
       {negotiationPoints.length > 0 && (
-        <Section id="points" title="価格協議での説明ポイント">
+        <Section id="points" title="交渉で使える説明ポイント">
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {negotiationPoints.map((point) => (
               <NegotiationPointCard key={point.id} point={point} />
@@ -141,7 +157,7 @@ export function FieldPage() {
         </div>
         <Link
           to={ROUTES.sheet(field.id)}
-          className="inline-flex shrink-0 items-center gap-2 rounded-xl bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground hover:brightness-110"
+          className="inline-flex shrink-0 items-center gap-2 rounded-lg bg-primary px-5 py-3 text-sm font-bold text-primary-foreground transition hover:-translate-y-0.5 hover:brightness-105"
         >
           {CTA.createSheet}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />

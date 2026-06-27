@@ -50,7 +50,7 @@ export function CostIndicatorCard({ indicator }: { indicator: OfficialCostIndica
           <p className="mt-0.5 text-xs text-muted">{CATEGORY_LABEL[indicator.category]}</p>
         </div>
         {isSample && (
-          <span className="inline-flex items-center gap-1 rounded-full bg-danger/15 px-2 py-1 text-xs font-semibold text-danger">
+          <span className="inline-flex items-center gap-1 rounded-full bg-[#fff0ec] px-2 py-1 text-xs font-semibold text-danger">
             <AlertTriangle className="h-3.5 w-3.5" aria-hidden="true" />
             サンプル
           </span>

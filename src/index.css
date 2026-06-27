@@ -3,21 +3,24 @@
 @tailwind utilities;
 
 /* =========================================================================
-   テーマ変数（Industrial Precision: 鉄黒系ダーク + 溶接オレンジ）
-   仕様書 9.1
+   テーマ変数（Town Factory Pop: 明るい工場ポップ）
    ========================================================================= */
 :root {
-  --background: #111318;
-  --surface: #191d24;
-  --surface-2: #202631;
-  --foreground: #f4f2ee;
-  --muted: #a5adba;
-  --border: rgba(255, 255, 255, 0.12);
-  --primary: #f59e0b;
-  --primary-foreground: #111318;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --success: #22c55e;
+  --background: #fff7ec;
+  --surface: #ffffff;
+  --surface-2: #fff0d6;
+  --foreground: #16313a;
+  /* テキスト用途で明色背景(白/#fff7ec/#fff0d6)でも WCAG AA(4.5:1) を満たすよう調整。
+     ポップなティール/レッド/グリーンの色相は維持し輝度のみ下げている。 */
+  --muted: #5b6a6f;
+  --border: rgba(22, 49, 58, 0.16);
+  --primary: #0c6f6b;
+  --primary-foreground: #ffffff;
+  --danger: #bf3728;
+  --warning: #f2a900;
+  --success: #0f7a54;
+  --coral: #ff8066;
+  --sunny: #ffd166;
 }
 
 html,
@@ -53,7 +56,58 @@ body {
 .industrial-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: 16px;
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(22, 49, 58, 0.08);
+}
+
+.pop-panel {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 14px 32px rgba(22, 49, 58, 0.1);
+}
+
+.pop-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgba(18, 143, 139, 0.22);
+  border-radius: 999px;
+  background: #e8fbf6;
+  color: #0d6f6b;
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0.45rem 0.7rem;
+}
+
+.comic-bubble {
+  position: relative;
+  border: 2px solid rgba(22, 49, 58, 0.9);
+  border-radius: 8px;
+  background: #fffaf1;
+  box-shadow: 3px 3px 0 rgba(22, 49, 58, 0.12);
+}
+
+.comic-bubble::after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  left: 24px;
+  width: 14px;
+  height: 14px;
+  border-right: 2px solid rgba(22, 49, 58, 0.9);
+  border-bottom: 2px solid rgba(22, 49, 58, 0.9);
+  background: #fffaf1;
+  transform: rotate(45deg);
+}
+
+.sticker-frame {
+  border-radius: 8px;
+  background: #fffaf1;
+  box-shadow:
+    0 8px 18px rgba(22, 49, 58, 0.1),
+    inset 0 0 0 1px rgba(22, 49, 58, 0.08);
 }
 
 .data-number {

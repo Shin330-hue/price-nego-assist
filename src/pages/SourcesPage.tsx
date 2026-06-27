@@ -13,21 +13,22 @@ export function SourcesPage() {
 
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-10">
-      <header className="space-y-2">
-        <h1 className="text-2xl font-bold sm:text-3xl">出典一覧</h1>
+      <header className="industrial-card space-y-2 border-l-4 border-l-primary p-5">
+        <span className="pop-kicker">公式データの確認場所</span>
+        <h1 className="text-2xl font-black sm:text-3xl">出典一覧</h1>
         <p className="text-sm leading-relaxed text-muted">
           本ツールで参照している公的統計データ・法令情報の出典と取得日・確認日です。最新状態は各公式サイトでご確認ください。
         </p>
       </header>
 
       <section aria-labelledby="data-sources" className="space-y-4">
-        <h2 id="data-sources" className="text-xl font-bold">
+        <h2 id="data-sources" className="text-xl font-black">
           公的統計データ
         </h2>
         <ul className="space-y-3">
           {OFFICIAL_INDICATORS.map((i) => (
             <li key={i.id} className="industrial-card space-y-1 p-4">
-              <h3 className="font-bold">{i.name}</h3>
+              <h3 className="font-black">{i.name}</h3>
               <p className="text-sm text-muted">
                 系列名: {i.seriesName} / 単位: {i.unit}
                 {i.baseYear ? ` / 基準年: ${i.baseYear}年` : ''}
@@ -55,13 +56,13 @@ export function SourcesPage() {
       </section>
 
       <section aria-labelledby="legal-sources" className="space-y-4">
-        <h2 id="legal-sources" className="text-xl font-bold">
+        <h2 id="legal-sources" className="text-xl font-black">
           法令・指針
         </h2>
         <ul className="space-y-3">
           {legalBases.map((b) => (
             <li key={b.id} className="industrial-card space-y-1 p-4">
-              <h3 className="font-bold">
+              <h3 className="font-black">
                 {b.title}
                 {b.articleLabel ? `（${b.articleLabel}）` : ''}
               </h3>
@@ -73,7 +74,7 @@ export function SourcesPage() {
       </section>
 
       <section aria-labelledby="ref-links" className="space-y-4">
-        <h2 id="ref-links" className="text-xl font-bold">
+        <h2 id="ref-links" className="text-xl font-black">
           公式情報・支援窓口
         </h2>
         <ul className="space-y-2">
@@ -86,7 +87,7 @@ export function SourcesPage() {
       </section>
 
       <section className="space-y-2">
-        <h2 className="text-xl font-bold">更新方針</h2>
+        <h2 className="text-xl font-black">更新方針</h2>
         <p className="text-sm leading-relaxed text-muted">
           公的データはリポジトリ内のJSONとして管理し、手動または更新スクリプトで更新します。各データには出典URL・公表日・取得日・系列名を付与しています。サンプルデータが含まれる場合は警告を表示し、本番公開前に公式データへ差し替えます。
         </p>

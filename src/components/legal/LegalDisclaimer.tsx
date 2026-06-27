@@ -15,7 +15,7 @@ export function LegalDisclaimer({ compact = false, className }: LegalDisclaimerP
       role="note"
       aria-label="法的注意書き"
       className={cn(
-        'flex gap-3 rounded-xl border p-4 text-sm leading-relaxed',
+        'flex gap-3 rounded-lg border p-4 text-sm leading-relaxed',
         compact
           ? 'border-gray-400 bg-white text-gray-800'
           : 'border-border bg-surface-2 text-muted',

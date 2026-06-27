@@ -22,10 +22,10 @@ export function DataQualityBanner({ indicators, className }: DataQualityBannerPr
     <div
       role="alert"
       className={cn(
-        'flex items-start gap-3 rounded-xl border p-4 text-sm',
+        'flex items-start gap-3 rounded-lg border p-4 text-sm',
         isError
-          ? 'border-danger/60 bg-danger/10 text-foreground'
-          : 'border-warning/60 bg-warning/10 text-foreground',
+          ? 'border-danger bg-[#fff0ec] text-foreground'
+          : 'border-warning bg-[#fff8dc] text-foreground',
         className,
       )}
     >

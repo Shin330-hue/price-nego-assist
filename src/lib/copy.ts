@@ -6,12 +6,12 @@
 export const APP_TITLE = '取適法・公的データ対応 価格協議準備ツール'
 export const APP_TITLE_SHORT = '価格協議準備ツール'
 
-export const HERO_HEADLINE = '金属加工業の価格協議に、公的根拠を。'
+export const HERO_HEADLINE = '価格協議の準備、ひとりで抱えない。'
 export const HERO_SUBCOPY =
-  '原材料費・エネルギー費・労務費の公的データと、取適法関連ポイントを整理し、取引先との価格協議に向けた準備シートを作成できます。'
+  '材料費・電気代・人件費の上昇を、公的データと自社資料で整理。言い出しづらい価格協議を、話し合いの準備から支えます。'
 
 export const CTA = {
-  selectField: '加工分野を選ぶ',
+  selectField: '加工分野をえらぶ',
   createSheet: '価格協議準備シートを作成',
   printPdf: 'PDF保存・印刷',
   copyLetter: '依頼文をコピー',

@@ -23,13 +23,14 @@ export function AboutPage() {
 
   return (
     <div className="mx-auto max-w-3xl space-y-10 px-4 py-10">
-      <header className="space-y-2">
-        <h1 className="text-2xl font-bold sm:text-3xl">このツールについて</h1>
+      <header className="industrial-card space-y-2 border-l-4 border-l-primary p-5">
+        <span className="pop-kicker">話し合いの材料をそろえる道具です</span>
+        <h1 className="text-2xl font-black sm:text-3xl">このツールについて</h1>
         <p className="text-sm text-muted">{APP_TITLE}</p>
       </header>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-bold">目的</h2>
+        <h2 className="text-xl font-black">目的</h2>
         <p className="leading-relaxed text-muted">
           金属加工業の中小受託事業者が、取引先へ価格協議を申し入れる前に、公的なコスト上昇データ・取適法関連ポイント・協議の進め方・依頼文を整理し、価格協議準備シートを作成するための準備ツールです。価格を必ず上げるための交渉代行ツールではなく、法令の趣旨に沿った正当なルートで価格協議を始めるための準備を支援します。
         </p>
@@ -38,7 +39,7 @@ export function AboutPage() {
 
       <section className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <div className="industrial-card space-y-2 p-5">
-          <h2 className="text-lg font-bold">できること</h2>
+          <h2 className="text-lg font-black">できること</h2>
           <ul className="space-y-2 text-sm text-muted">
             {CAN_DO.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -49,7 +50,7 @@ export function AboutPage() {
           </ul>
         </div>
         <div className="industrial-card space-y-2 p-5">
-          <h2 className="text-lg font-bold">できないこと</h2>
+          <h2 className="text-lg font-black">できないこと</h2>
           <ul className="space-y-2 text-sm text-muted">
             {CANNOT_DO.map((item) => (
               <li key={item} className="flex items-start gap-2">
@@ -62,14 +63,14 @@ export function AboutPage() {
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-bold">データ更新方針</h2>
+        <h2 className="text-xl font-black">データ更新方針</h2>
         <p className="leading-relaxed text-muted">
           公的データは実行時に外部APIへアクセスせず、リポジトリ内のJSONとして保持します。各データには出典URL・公表日・取得日・系列名を付与し、サンプルデータが含まれる場合は警告を表示します。法令情報は公式ソースで確認のうえ、確認日を記録します。
         </p>
       </section>
 
       <section className="space-y-3">
-        <h2 className="text-xl font-bold">法的注意</h2>
+        <h2 className="text-xl font-black">法的注意</h2>
         <LegalDisclaimer />
       </section>
     </div>

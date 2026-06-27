@@ -49,9 +49,9 @@ export function CostTrendChart({ indicator, compact = false, height }: CostTrend
       ? toAnnualAverages(rawData)
       : rawData
 
-  const stroke = compact ? '#b45309' : '#f59e0b'
-  const axisColor = compact ? '#444' : '#a5adba'
-  const gridColor = compact ? '#ddd' : 'rgba(255,255,255,0.08)'
+  const stroke = compact ? '#b45309' : '#128f8b'
+  const axisColor = compact ? '#444' : '#65757a'
+  const gridColor = compact ? '#ddd' : 'rgba(22,49,58,0.12)'
   const chartHeight = height ?? (compact ? 180 : 240)
 
   const chart = (
@@ -87,9 +87,10 @@ export function CostTrendChart({ indicator, compact = false, height }: CostTrend
           ]}
           labelFormatter={(label: string) => formatPeriod(String(label), indicator.frequency)}
           contentStyle={{
-            background: '#191d24',
-            border: '1px solid rgba(255,255,255,0.12)',
+            background: '#fffaf1',
+            border: '1px solid rgba(22,49,58,0.16)',
             borderRadius: 8,
+            color: '#16313a',
             fontSize: 12,
           }}
         />
