@@ -29,6 +29,13 @@ export const LEGAL_DISCLAIMER_FULL =
 export const DATA_NOTICE =
   '公的指標は市場全体の傾向を示す資料です。個社の値上げ額を直接証明するものではありません。実際の協議では、自社の仕入明細、見積書、電力料金明細、賃金改定資料等とあわせてご活用ください。'
 
+// アプリ全体のエラー時フォールバック（ErrorBoundary）
+export const ERROR_BOUNDARY_TITLE = '表示中に問題が発生しました'
+export const ERROR_BOUNDARY_BODY =
+  'お手数ですが、ページを再読み込みしてください。問題が続く場合は、時間をおいて再度お試しください。'
+export const ERROR_BOUNDARY_RELOAD = '再読み込み'
+export const ERROR_BOUNDARY_HOME = 'トップへ戻る'
+
 // データ品質警告（仕様書 8.1）
 export const SAMPLE_DATA_WARNING =
   'このページには開発用サンプルデータが含まれています。実際の価格協議資料として使用する前に、公式データへの差し替えが必要です。'

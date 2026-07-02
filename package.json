@@ -6,16 +6,19 @@
   "description": "取適法・公的データ対応 価格協議準備ツール（金属加工業向け）",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsx scripts/generate-sitemap.ts && tsc --noEmit && vite build",
     "preview": "vite preview",
     "lint": "eslint .",
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "validate:data": "tsx scripts/validate-data.ts"
+    "validate:data": "tsx scripts/validate-data.ts",
+    "gen:sitemap": "tsx scripts/generate-sitemap.ts",
+    "update:data": "tsx scripts/update-official-data.ts"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
     "lucide-react": "^0.468.0",
     "react": "^18.3.1",

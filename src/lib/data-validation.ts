@@ -178,6 +178,7 @@ export function validateAllData(options?: { production?: boolean }): ValidationI
   const production = options?.production ?? false
   const issues: ValidationIssue[] = []
   const indicatorIds = new Set(OFFICIAL_INDICATORS.map((i) => i.id))
+  const indicatorCategory = new Map(OFFICIAL_INDICATORS.map((i) => [i.id, i.category]))
 
   // 指標個別検証
   for (const indicator of OFFICIAL_INDICATORS) {
@@ -211,6 +212,25 @@ export function validateAllData(options?: { production?: boolean }): ValidationI
       if (!indicatorIds.has(id)) {
         issues.push({ source: 'fields.ts', message: `${field.id} が未知の indicatorId を参照: ${id}` })
       }
+    }
+
+    // categories は relatedIndicatorIds のカテゴリ集合と一致すること
+    // （FieldCard が指標データを読まずにタグ表示するための事前計算値。ドリフト防止）
+    const derivedCategories = new Set<string>()
+    for (const id of field.relatedIndicatorIds) {
+      const cat = indicatorCategory.get(id)
+      if (cat) derivedCategories.add(cat)
+    }
+    const declaredCategories = new Set<string>(field.categories)
+    const missing = [...derivedCategories].filter((c) => !declaredCategories.has(c))
+    const extra = [...declaredCategories].filter((c) => !derivedCategories.has(c))
+    if (missing.length > 0 || extra.length > 0) {
+      issues.push({
+        source: 'fields.ts',
+        message:
+          `${field.id} の categories が relatedIndicatorIds のカテゴリ集合と不一致` +
+          `（不足: ${missing.join(',') || 'なし'} / 余分: ${extra.join(',') || 'なし'}）`,
+      })
     }
   }
 

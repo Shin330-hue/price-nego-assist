@@ -31,6 +31,12 @@ export interface MetalField {
   laborProfile: string
   consumables: string[]
   relatedIndicatorIds: string[]
+  /**
+   * 主な影響コストのカテゴリ（relatedIndicatorIds のカテゴリ集合＝初出順・重複除去）。
+   * 分野カードのタグ表示に使う。指標データ本体を初期バンドルへ引き込まないよう静的に保持し、
+   * relatedIndicatorIds との整合は validate:data が検証する。
+   */
+  categories: CostCategory[]
   suggestedOwnDocuments: string[]
 }
 

@@ -58,9 +58,10 @@ src/
   routes.tsx            # React Router 定義（lib/routes.ts はパス生成・検証）
   test/                 # 単体・データ整合性・UI テスト
 scripts/
-  validate-data.ts      # データ検証スクリプト
-  generate-ogp.mjs      # OGP 画像生成
-  update-official-data.example.ts  # 将来のデータ更新スクリプト雛形
+  validate-data.ts        # データ検証スクリプト
+  generate-ogp.mjs        # OGP 画像生成
+  generate-sitemap.ts     # sitemap.xml / robots.txt 生成（build 前に実行）
+  update-official-data.ts # 日銀 API から公的データを更新（pnpm update:data）
 docs/                   # 要件/設計/仕様 + DATA_UPDATE / DATA_CATALOG / LEGAL_REVIEW
 ```
 

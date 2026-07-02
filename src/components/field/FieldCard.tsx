@@ -2,16 +2,14 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import type { MetalField } from '../../types/domain'
 import { ROUTES } from '../../lib/routes'
-import { getIndicatorsByIds } from '../../lib/data-loader'
 import { CATEGORY_LABEL } from '../../lib/labels'
 import { FIELD_PRESENTATION } from '../../data/ui-presentation'
 
 export function FieldCard({ field }: { field: MetalField }) {
   const presentation = FIELD_PRESENTATION[field.id]
-  // 主な影響コストのタグ＝関連指標のカテゴリ（重複除去）。
-  const categories = Array.from(
-    new Set(getIndicatorsByIds(field.relatedIndicatorIds).map((i) => i.category)),
-  )
+  // 主な影響コストのタグ＝関連指標のカテゴリ（fields.ts に事前計算・重複除去済み）。
+  // 指標データ本体を初期バンドルへ引き込まないよう field.categories を参照する。
+  const categories = field.categories
 
   return (
     <Link
@@ -20,12 +18,15 @@ export function FieldCard({ field }: { field: MetalField }) {
     >
       <div className="flex items-start justify-between gap-3">
         <div className="sticker-frame aspect-square w-24 shrink-0 overflow-hidden sm:w-28 xl:w-32">
-          <img
-            src={presentation.imageSrc}
-            alt={presentation.imageAlt}
-            className="h-full w-full object-cover"
-            loading="lazy"
-          />
+          <picture>
+            <source srcSet={presentation.imageSrc.replace(/\.png$/, '.webp')} type="image/webp" />
+            <img
+              src={presentation.imageSrc}
+              alt={presentation.imageAlt}
+              className="h-full w-full object-cover"
+              loading="lazy"
+            />
+          </picture>
         </div>
         <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-surface-2 text-primary transition group-hover:translate-x-0.5">
           <ArrowRight className="h-5 w-5" aria-hidden="true" />

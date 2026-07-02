@@ -10,30 +10,50 @@
       content="材料費・電気代・人件費の上昇を、公的データと自社資料で整理。金属加工業向けの価格協議準備ツールです。"
     />
 
-    <!-- OGP (X / SNS 共有用)。og:image は絶対URL必須。
-         TODO: 公開ドメイン確定後に下記 URL を実ドメインへ差し替える。 -->
+    <!-- 公開URLは .env の VITE_SITE_URL を単一情報源とし、Vite が %VITE_SITE_URL% を置換する。
+         ドメイン確定後は .env の 1 行を差し替えるだけでよい。 -->
+    <link rel="canonical" href="%VITE_SITE_URL%/" />
+
+    <!-- OGP (X / SNS 共有用)。og:image は絶対URL必須。 -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content="価格協議の準備、ひとりで抱えない。" />
     <meta
       property="og:description"
       content="材料費・電気代・人件費の上昇を、公的データと自社資料で整理。価格協議の準備を支える公開ツールです。"
     />
-    <meta property="og:image" content="https://price-nego-assist.vercel.app/ogp.png" />
+    <meta property="og:image" content="%VITE_SITE_URL%/ogp.png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
-    <meta property="og:url" content="https://price-nego-assist.vercel.app/" />
+    <meta property="og:url" content="%VITE_SITE_URL%/" />
+    <meta property="og:locale" content="ja_JP" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="価格協議の準備、ひとりで抱えない。" />
     <meta
       name="twitter:description"
       content="材料費・電気代・人件費の上昇を、公的データと自社資料で整理できます。"
     />
-    <meta name="twitter:image" content="https://price-nego-assist.vercel.app/ogp.png" />
+    <meta name="twitter:image" content="%VITE_SITE_URL%/ogp.png" />
     <meta
       name="twitter:image:alt"
       content="町工場で価格協議の根拠資料を整理しているマンガ風イラスト"
     />
+
+    <!-- 構造化データ（検索エンジン向け）。無料・ログイン不要の公開Webツール。 -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "価格協議準備ツール",
+        "url": "%VITE_SITE_URL%/",
+        "description": "材料費・電気代・人件費の上昇を、公的データと自社資料で整理。金属加工業向けの価格協議準備ツールです。",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web",
+        "inLanguage": "ja-JP",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

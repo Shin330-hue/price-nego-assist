@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://price-nego-assist.vercel.app/sitemap.xml

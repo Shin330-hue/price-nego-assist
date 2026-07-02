@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { AppHeader } from './components/layout/AppHeader'
 import { AppFooter } from './components/layout/AppFooter'
 import { AppRoutes } from './routes'
@@ -21,6 +22,9 @@ export default function App() {
         <AppRoutes />
       </main>
       <AppFooter />
+      {/* アクセス解析（Cookieレス・個人情報を集めない）。dev では no-op。
+          データ収集には Vercel 側でプロジェクトの Analytics を有効化する必要がある。 */}
+      <Analytics />
     </div>
   )
 }

@@ -24,6 +24,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['material', 'consumables', 'energy', 'labor'],
     suggestedOwnDocuments: ['材料商社からの価格改定通知', '直近の仕入明細', '工具・切削油の購入実績', '電力料金明細'],
   },
   {
@@ -43,6 +44,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['material', 'consumables', 'energy', 'labor'],
     suggestedOwnDocuments: ['鋼材・溶接材料の改定通知', 'ガス料金明細', '電力料金明細', '賃金改定資料'],
   },
   {
@@ -62,6 +64,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['consumables', 'other', 'energy', 'labor'],
     suggestedOwnDocuments: ['砥石・研磨材の購入実績', '電力料金明細', '賃金改定資料'],
   },
   {
@@ -81,6 +84,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['material', 'consumables', 'energy', 'labor'],
     suggestedOwnDocuments: ['鋼板・アルミ板の改定通知', '金型保全費の実績', '電力料金明細', '賃金改定資料'],
   },
   {
@@ -101,6 +105,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['material', 'energy', 'consumables', 'labor'],
     suggestedOwnDocuments: ['鋼板・ステンレスの改定通知', 'ガス・電力料金明細', '消耗品の購入実績', '賃金改定資料'],
   },
   {
@@ -121,6 +126,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['material', 'consumables', 'other', 'energy', 'labor'],
     suggestedOwnDocuments: ['薬品・非鉄金属の改定通知', '電力・水道料金明細', '排水処理費の実績', '賃金改定資料'],
   },
   {
@@ -142,6 +148,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['material', 'consumables', 'energy', 'labor'],
     suggestedOwnDocuments: ['地金・副資材の改定通知', 'ガス・電力料金明細', '賃金改定資料'],
   },
   {
@@ -163,6 +170,7 @@ export const METAL_FIELDS: MetalField[] = [
       'cgpi-electricity',
       'minimum-wage-national-average',
     ],
+    categories: ['energy', 'consumables', 'labor'],
     suggestedOwnDocuments: ['ガス・電力料金明細', '炉保全費の実績', '賃金改定資料'],
   },
 ]

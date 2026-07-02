@@ -96,11 +96,42 @@ https://www.stat-search.boj.or.jp/api/v1/getDataCode?format=csv&lang=jp&db=PR02&
 
 ## 更新フロー
 
-1. 公式ソース（日銀CGPI / 厚労省最低賃金）から最新の系列値を取得する。
+### 自動（日銀 CGPI/SPPI）— `pnpm update:data`
+
+`scripts/update-official-data.ts` が、各指標の `calculationNote` にある系列コード（`PRCG20_`/`PRCS20_`）から
+日銀 REST API（getDataCode, CSV）を叩き、**API が返した実数のみ**で `values` を差し替える（値の推測・生成はしない）。
+
+```
+pnpm update:data --dry-run   # 取得のみ。差分を表示し JSON は書き換えない（パーサ確認・事前確認用）
+pnpm update:data             # 変更があった指標だけ values / publishedAt / retrievedAt を更新
+git diff src/data/official-indices/   # 数値と改定内容を人がレビュー（必須）
+pnpm validate:data && VALIDATE_PRODUCTION=true pnpm validate:data
+```
+
+- 取得窓は既存 `values[0].period` に固定（キュレーターが選んだ期間を尊重）。
+- 健全性ガード: 非空・`period` 昇順・「取得件数 ≥ 既存件数」を満たさない指標は skip（部分取得を弾く）。
+- `publishedAt` は CSV の `LAST_UPDATE`（YYYYMMDD）から設定。値・publishedAt に変化が無い指標は書き換えない（差分を汚さない）。
+- **系列コードを持たない指標（最低賃金＝厚労省・API 無）は skip** → 下記の手動手順で更新する。
+
+### 手動（厚労省 最低賃金など、API の無いもの）
+
+1. 公式ソースから最新の系列値を取得する。
 2. 該当 JSON の `values`（`period` 昇順）を更新する。月次は `YYYY-MM`、年次は `YYYY`。
 3. `quality` を `official_manual` に、`retrievedAt` を当日、`publishedAt` を公表日に更新する。
 4. `pnpm validate:data` を実行し、構造・参照・日付・URL を検証する。
 5. 公開前に `VALIDATE_PRODUCTION=true pnpm validate:data` を実行し、`sample` が残っていないことを確認する。
+
+### 月次自動化（GitHub Actions）
+
+`.github/workflows/update-data.yml`（毎月15日・`workflow_dispatch` 可）が `pnpm update:data` → 本番ゲート検証 →
+**PR 作成**まで行う。PR は必ず数値をレビューしてからマージする。
+
+このワークフローファイルは、push に OAuth トークンの `workflow` スコープが要るため既定で `.gitignore` 管理（未追跡）。
+有効化するには次のいずれか:
+
+- `gh auth refresh -s workflow` でスコープを付与し、`.gitignore` から `.github/workflows/update-data.yml` を外して push。
+- または GitHub の Web UI で同名ファイルを作成し、Settings → Actions → Workflow permissions で
+  「Allow GitHub Actions to create and approve pull requests」を有効化する（`peter-evans/create-pull-request` に必要）。
 
 ## 計算ラベルの注意
 
@@ -108,4 +139,4 @@ https://www.stat-search.boj.or.jp/api/v1/getDataCode?format=csv&lang=jp&db=PR02&
 - 配列先頭→最新の比較は「表示期間内変化率」。基準年比と混同しない。
 - 前年比は frequency（月次=前年同月 / 四半期=前年同四半期 / 年次=前年）で比較する。「5データポイント前」固定比較は禁止。
 
-将来的な半自動化の雛形は `scripts/update-official-data.example.ts` を参照（抽出結果は必ず人手レビュー）。
+日銀系列の実装は `scripts/update-official-data.ts`（`pnpm update:data`）を参照。取得結果は必ず人手レビューしてからコミットする。

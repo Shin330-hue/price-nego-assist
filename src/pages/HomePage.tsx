@@ -33,12 +33,15 @@ export function HomePage() {
     <div className="mx-auto max-w-6xl space-y-14 px-4 py-8 sm:space-y-16 sm:py-10">
       {/* Hero */}
       <section className="relative isolate min-h-[440px] overflow-hidden rounded-lg border border-border bg-surface shadow-2xl shadow-teal-900/15 sm:min-h-[480px]">
-        <img
-          src="/illustrations/hero-factory-comic.png"
-          alt=""
-          aria-hidden="true"
-          className="absolute inset-0 h-full w-full object-cover object-center"
-        />
+        <picture>
+          <source srcSet="/illustrations/hero-factory-comic.webp" type="image/webp" />
+          <img
+            src="/illustrations/hero-factory-comic.png"
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
         <div className="absolute inset-y-0 left-0 w-full bg-[rgba(255,255,255,0.92)] sm:w-[58%]" />
         <div className="relative flex min-h-[440px] max-w-xl flex-col justify-center px-5 py-8 sm:min-h-[480px] sm:px-10">
           <span className="pop-kicker mb-4 w-fit">
